@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkbox</title>
+    <style type="text/css" media="screen">
+        html {
+            font-size: 100px;
+        }
+
+        /* 类似操场形状的box外围 */
+        .emulate-ios-button {
+            display: block;
+            width: 2rem;
+            height: 1rem;
+            background: #ccc;
+            border-radius: 5rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+
+        /* box里面的圆圈 */
+        .emulate-ios-button:after {
+            content: '';
+            display: block;
+            width: 0.9rem;
+            height: 0.9rem;
+            border-radius: 100%;
+            background: #fff;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            left: 0.05rem;
+            top: 0.05rem;
+            transition: all 0.3s ease;
+        }
+
+        /* box里面的圆圈被激活后 */
+        .emulate-ios-button:active:after {
+            width: 1.1rem;
+        }
+
+        /* CSS 相邻兄弟选择器可选择紧接在另一元素后的元素，且二者有相同父元素。 */
+        /* 设置当CheckBox被选中后的效果 */
+        input:checked+label {
+            background: #34bf49;
+        }
+        /* 也可以写成.raw-checkbox:checked+label   以下同 */
+
+        /* 这里是伪元素偏移,初始是0.9+0.05 ,所以这里1.05rem */
+        input:checked+label:after {
+            left: 1.05rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="checkbox"  hidden name="check" id="ios-checkbox" name="emulate-ios-button">
+        <label for="ios-checkbox" class="emulate-ios-button"></label>
+    </div>
+</body>
+
+</html>
