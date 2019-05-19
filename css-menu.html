@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>css menu</title>
+        <style media="screen">
+            html {
+              -moz-box-sizing: border-box;
+                   box-sizing: border-box;
+            }
+            a,a:hover{
+                color:#FFF;
+                text-decoration:none
+            }
+
+            *, *:before, *:after {
+              -moz-box-sizing: border-box;
+                   box-sizing: border-box;
+            }
+
+            body {
+              margin: 0;
+              font-family: 'Open Sans', sans-serif;
+              font-size: 16px;
+              line-height: 1.5;
+              background: #27ae60;
+            }
+
+            nav ul {
+              list-style: none;
+              padding-left: 0;
+              margin-top: 0;
+              margin-bottom: 0;
+            }
+
+            h1 {
+              width: 500px;
+              margin: 100px auto 20px;
+              color: #f0f0f0;
+              text-align: center;
+            }
+
+            .nav {
+              width: 500px;
+              margin: 0 auto;
+              background: #1e8449;
+              color: #f0f0f0;
+            }
+            .nav a {
+              display: block;
+              padding: 0 16px;
+              line-height: inherit;
+              cursor: pointer;
+            }
+            .nav_menu {
+              line-height: 45px;
+              font-weight: 700;
+              text-transform: uppercase;
+            }
+            .nav_menu-item {
+              display: inline-block;
+              position: relative;
+            }
+            .nav_menu-item:hover {
+              background-color: #9b59b6;
+            }
+
+            /* 下面这个选择器是整个导航菜单的灵魂，它选中了鼠标hover时，其下子元素.nav_submenu */
+            .nav_menu-item:hover .nav_submenu {
+              display: block;
+            }
+            .nav_submenu-item:hover .nav_submenu-2 {
+                display: block;
+
+            }
+            /* .nav_submenu默认display: none */
+            .nav_submenu, .nav_submenu-2 {
+              font-weight: 300;
+              text-transform: none;
+              /* 设置文字都为小写 */
+              display: none;
+              position: absolute;
+              width: 220px;
+              background-color: #9b59b6;
+            }
+
+            .nav_submenu-item:hover , .nav_submenu-item-2:hover{
+              background: rgba(0, 0, 0, 0.1);
+            }
+
+            /* .second {
+                position: relative;
+            } */
+
+            /* 给三级菜单重新定位 */
+            .posi {
+                position: absolute;
+                left:220px;
+                top:0px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1></h1><!-- 空的h1也占位置 -->
+        <nav class="nav">
+          <ul class="nav_menu">
+            <li class="nav_menu-item"><a href="#" target="_blank">Home</a></li>
+            <li class="nav_menu-item"><a href="#" target="_blank">Services</a>
+              <ul class="nav_submenu">
+                <li class="nav_submenu-item"> <a href="#" target="_blank">Web Design</a>
+                    <ul class="nav_submenu-2  posi">
+                      <li class="nav_submenu-item-2"> <a href="#" target="_blank">Our Company</a></li>
+                      <li class="nav_submenu-item-2"> <a href="#" target="_blank">Our Xixi</a></li>
+                      <li class="nav_submenu-item-2"> <a href="#" target="_blank">Our Reach</a></li>
+                      <li class="nav_submenu-item-2"> <a href="#" target="_blank">Our Reach I</a></li>
+                      <li class="nav_submenu-item-2"> <a href="#" target="_blank">Our Reach II</a></li>
+                    </ul>
+                </li>
+                <li class="nav_submenu-item"> <a href="#" target="_blank">Web Development</a></li>
+                <li class="nav_submenu-item"> <a href="#" target="_blank">Web Hosting</a></li>
+              </ul>
+            </li>
+            <li class="nav_menu-item"><a href="#" target="_blank">About</a>
+              <ul class="nav_submenu">
+                <li class="nav_submenu-item"> <a href="#" target="_blank">Our Company</a></li>
+                <li class="nav_submenu-item"> <a href="#" target="_blank">Our Xixi</a></li>
+                <li class="nav_submenu-item"> <a href="#" target="_blank">Our Reach</a></li>
+              </ul>
+            </li>
+            <li class="nav_menu-item"><a href="#" target="_blank">Blog</a></li>
+            <li class="nav_menu-item"><a href="#" target="_blank">Contact</a></li>
+          </ul>
+        </nav>
+    </body>
+</html>
