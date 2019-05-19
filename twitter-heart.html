@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <style>
+        * {
+            background-color:rgba(0,0,0,0.08)
+        }
+
+        input {
+            display:none;
+        }
+
+        input + label {
+            cursor: pointer;
+            display: block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            background-image:url(https://abs.twimg.com/a/1542244373/img/animations/web_heart_animation_edge.png);
+            /* transition: background-position 0.46666s linear; */
+            /* transition: background-position 0.8s steps(28); */
+            /* transition 这句写在这里跟写在下面效果是不一样的 */
+        }
+
+        /* 图片总共长2900,总共有29个心心,每张宽100px,但是第一张已经在了，所以图片只需要位移2800px */
+        input:checked + label {
+            background-position: -2800px 0;
+            transition: background-position 0.8s steps(28);
+        }
+        /* 最后效果表现为 初始：黑白的心  点一下有动画 0.8s之后停留在彩色心   再点一下回到黑白的心 */
+    </style>
+    <body>
+        <input type="checkbox" id="ck">
+        <label for="ck"></label>
+    </body>
+</html>
