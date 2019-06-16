@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <!-- ch0103 -->
+        <script id="ch0103/01">
+            var a = + (prompt("please input a"))
+            var b = + (prompt("please input b"))
+
+            var result = a + b
+
+            console.log(result)
+        </script>
+
+        <script id="ch0103/02">
+            var a = + (prompt("please input a"))
+            var b = + (prompt("please input b"))
+            var c = + (prompt("please input c"))
+
+            var result = (a + b) * c
+
+            console.log(result)
+        </script>
+
+        <script id="ch0103/03">
+            var a = + (prompt("please input a"))
+            var b = + (prompt("please input b"))
+            var c = + (prompt("please input c"))
+
+            var result = Math.floor((a + b) / c)
+
+            console.log(result)
+        </script>
+
+        <script id="ch0103/04">
+            var a = + (prompt("please input a"))
+            var b = + (prompt("please input b"))
+
+
+            var result1 = Math.floor(a / b)
+            var result2 = a % b
+
+            console.log(result1, result2)
+        </script>
+
+
+        <script id="ch0103/05">
+            var a = + (prompt("please input a"))
+            var b = + (prompt("please input b"))
+
+
+            var result = a / b
+
+            console.log(result)
+        </script>
+
+        <script id="ch0103/06">
+            var a = + (prompt("please input a"))
+            var b = + (prompt("please input b"))
+
+            var result = a / b
+
+            console.log(result)
+        </script>
+
+        <script id="ch0103/07">
+            var a = + (prompt("please input a"))
+            var b = + (prompt("please input b"))
+            var c = + (prompt("please input c"))
+            var d = + (prompt("please input d"))
+            var x = + (prompt("please input x"))
+
+            var result = a * Math.pow(x, 3) + b * Math.pow(x, 2) + c * x + d
+
+            console.log(result)
+        </script>
+
+        <script id="ch0103/08">
+            var F = + (prompt("please input F"))
+
+            var C = C = 5 * (F - 32) / 9
+
+            console.log(C)
+        </script>
+
+        <script id="ch0103/09">
+            var r = + (prompt("please input r"))
+            var pi = 3.14159
+
+
+            var D = 2 * r
+            var Perimeter = 2 * pi * r
+            var Area = pi * r * r
+
+            console.log(D, Perimeter, Area)
+        </script>
+
+        <script id="ch0103/10">
+            var r1 = + (prompt("please input r1"))
+            var r2 = + (prompt("please input r2"))
+
+            var R = 1 / (1 / r1 + 1 / r2)
+
+            console.log(R)
+        </script>
+
+        <script id="ch0103/11">
+            var a = + (prompt("please input a"))
+            var b = + (prompt("please input b"))
+
+            var r =  a - Math.floor(a / b) *b
+
+            console.log(r)
+        </script>
+
+        <script id="ch0103/12">
+            var r = + (prompt("please input r"))
+            var pi = 3.14
+
+            //4 / 3 加括号竟然就错了
+            var V = 4 / 3 * pi * Math.pow(r, 3)
+            console.log(V)
+        </script>
+
+
+        <script id="ch0103/13">
+            let a = + (prompt("please input a"))
+
+            //题目已经说了是三位数  就把题目想得简单一点
+            let b = String(a).slice(2) + String(a).slice(1, 2) + String(a).slice(0, 1)
+
+            //美中不足的是这个b 是个字符串
+            console.log(b)
+        </script>
+
+        <script id="ch0103/14">
+            var h = + (prompt("please input h"))
+            var r = + (prompt("please input r"))
+            var Pi = 3.14159
+
+
+            var V = (Pi * r * r * h) / 1000
+            var N = Math.ceil(20 / V)
+
+            console.log(N)
+        </script>
+
+        <script id="ch0103/15">
+            var n = + (prompt("please input n"))
+            var x = + (prompt("please input x"))
+            var y = + (prompt("please input y"))
+
+
+            var left = n - Math.ceil((1 / x) * y)
+
+            console.log(left)
+        </script>
+
+        <script id="ch0103/16">
+            var Xa = + (prompt("please input Xa"))
+            var Ya = + (prompt("please input Ya"))
+            var Xb = + (prompt("please input Xb"))
+            var Yb = + (prompt("please input Yb"))
+
+            var L1 = Math.pow((Xa - Xb), 2)
+            var L2 = Math.pow((Ya - Yb), 2)
+            var L = Math.sqrt(L1 + L2)
+
+            console.log(L)
+        </script>
+
+        <script id="ch0103/17">
+            let x1 = + (prompt("please input x1"))
+            let y1 = + (prompt("please input y2"))
+            let x2= + (prompt("please input x2"))
+            let y2 = + (prompt("please input y2"))
+            let x3= + (prompt("please input x3"))
+            let y3 = + (prompt("please input y3"))
+
+            //已知三个坐标，先求三条边长以及半周长
+            const length = function(Xa, Ya, Xb, Yb) {
+                let L = Math.sqrt(Math.pow((Xa - Xb), 2) + Math.pow((Ya - Yb), 2))
+                return L
+            }
+
+            let a = length(x1, y1, x2, y2)
+            let b = length(x1, y1, x3, y3)
+            let c = length(x2, y2, x3, y3)
+            let p = (a + b + c) / 2
+
+            let S = Math.sqrt(p * (p - a) * (p - b) * (p - c))
+
+            console.log(S)
+        </script>
+
+        <script id="ch0103/18">
+            var a1 = + (prompt("please input a1"))
+            var a2 = + (prompt("please input a2"))
+            var n = + (prompt("please input n"))
+
+
+            var an = (n - 1) * (a2 -a1) + a1
+
+
+            console.log(an)
+        </script>
+
+        <script id="ch0103/19">
+            var a = + (prompt("please input a"))
+            var b = + (prompt("please input b"))
+
+            var c = a * b
+
+            console.log(c)
+        </script>
+
+        <script id="ch0103/20">
+            var a = + (prompt("please input a"))
+
+            var b = Math.pow(2, a)
+
+            console.log(b)
+        </script>
+
+
+        <!-- ch0104 -->
+        <script id="ch0104/01">
+            let a = + (prompt("please input a"))
+
+            const pos = function(a) {
+                if (a > 0) {
+                    console.log("positive")
+                } else if (a == 0) {
+                    console.log("zero")
+                } else console.log("negative")
+            }
+
+          pos()
+        </script>
+
+        <script id="ch0104/02">
+            let n = + (prompt("please input n"))
+
+            const abs = function(n) {
+                if (n < 0) {
+                    n = -n
+                }
+                return n
+            }
+
+            console.log(abs(n))
+        </script>
+
+        <script id="ch0104/03">
+            let n = + (prompt("please input n"))
+
+            const OddEven = function(n) {
+                if ((n % 2) === 0) {
+                    console.log("even")
+                } else console.log("odd")
+
+            }
+
+            OddEven()
+        </script>
+
+        <script id="ch0104/04">
+            var A = prompt("ASCII", "A")
+            var ascii = A.charCodeAt()
+            if (ascii % 2 == 0) {
+                console.log("NO")
+            }
+            else {
+                console.log("YES")
+            }
+        </script>
+
+        <script id="ch0104/05">
+            let x = + (prompt("please input x"))
+            let y = + (prompt("please input y"))
+
+            const Compare = function(x, y) {
+                if (x - y > 0) {
+                    console.log(">")
+                } else if (x - y === 0) {
+                    console.log("=")
+                } else console.log("<")
+            }
+
+            Compare()
+        </script>
+
+        <script id="ch0104/06">
+            let x = + (prompt("please input x"))
+
+            const TwoDigits = function(x) {
+                if ((x >= 10) && (x <= 99)) {
+                    return 1
+                } else return 0
+            }
+
+            console.log(TwoDigits(x))
+        </script>
+
+        <script id="ch0104/07">
+            let x = + (prompt("please input x"))
+            let y = + (prompt("please input y"))
+
+
+            const Lucky = function(x, y) {
+                if ((x >= 10) || (y >= 20)) {
+                    return 1
+                } else return 0
+            }
+
+            console.log(Lucky(x, y))
+        </script>
+
+        <script id="ch0104/08">
+            let n = + (prompt("please input n"))
+            if (n % 15 === 0) {
+                console.log("YES")
+            } else {
+                console.log("NO")
+            }
+        </script>
+
+        <script id="ch0104/09">
+            let n = + (prompt("please input n"))
+            if (n % 105 === 0) {
+                console.log("3 5 7")
+            } else if (n % 15 === 0) {
+                console.log("3 5")
+            } else if (n % 21 === 0) {
+                console.log("3 7")
+            } else if (n % 35 === 0) {
+                console.log("5 7")
+            } else if (n % 3 === 0) {
+                console.log("3")
+            } else if (n % 5 === 0) {
+                console.log("5")
+            } else if (n % 7 === 0) {
+                console.log("7")
+            } else console.log("n")
+        </script>
+
+        <script id="ch0104/10">
+            let y = + (prompt("please input y"))
+            let s = + (prompt("please input s"))
+            if ((y >= 60 && s >= 60) || (y< 60 && s < 60)) {
+                console.log(0)
+            } else console.log(1)
+        </script>
+
+        <script id="ch0104/11">
+            let day = + (prompt("please input day"))
+            if ((day % 2 != 0) && (day != 7)) {
+                console.log("NO")
+            } else console.log("YES")
+        </script>
+
+        <script id="ch0104/12">
+            let s = + (prompt("please input s"))
+            let Tb = 50 +(s / 3)
+            let Tw = s / 1.2
+
+            if (Tb > Tw) {
+                console.log("Walk")
+            }
+            else if (Tb < Tw) {
+                console.log("Bike")
+            } else console.log("All")
+        </script>
+
+        <script id="ch0104/13">
+            let x = + (prompt("please input x"))
+            let y = 0
+
+            if (0 <= x < 5) {
+                y = -x + 2.5;
+            } else if (5 <= x < 10) {
+                y = 2 - 1.5 * (x -3) * (x - 3);
+            } else y = (x / 2) - 1.5;
+
+            console.log(y.toFixed(3));
+        </script>
+
+        <script id="ch0104/15">
+            let a = + (prompt("please input a"))
+            let b = + (prompt("please input b"))
+            let c = + (prompt("please input c"))
+
+            if (a > b && a > c) {
+                console.log(a)
+            } else if(b > a && b > c) {
+                console.log(b)
+            } else if (c > a && c > b) {
+                console.log(c)
+            } else if (a = b = c) {
+                console.log(a)
+            }
+        </script>
+
+        <script id="ch0104/16">
+            let a = + (prompt("please input a"))
+            let b = + (prompt("please input b"))
+            let c = + (prompt("please input c"))
+
+            if ((a + b > c) || (b + c > a) || (a + c > b)) {
+                console.log("yes")
+            } else console.log("no")
+        </script>
+
+        <script id="ch0104/17">
+            let year = + (prompt("please input year"))
+
+            if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
+                console.log("Y")
+            } else console.log("N")
+        </script>
+
+        <script id="ch0104/18">
+            let x = + (prompt("please input x"))
+            let y = + (prompt("please input y"))
+
+            if ((-1 <= x <= 1) && (-1 <= y <= 1)) {
+                console.log("yes")
+            } else console.log("no")
+        </script>
+
+        <script id="ch0104/19">
+            let x = + (prompt("please input x"))
+            let y = + (prompt("please input y"))
+            let f = + (prompt("please input f"))
+            let y = 0
+
+            if (f == "+") {
+                y = x1 + x2
+            } else if (f == "-") {
+                y = x1 - x2
+            } else if (f =="*") {
+                y = x1 * x2
+            } else if (f == "/") {
+                y = x1 / x2
+            } else if ((f == "/") && (x2 = 0)) {
+                y = "Divided by zero"
+            } else y = "Invalid operator!"
+
+            console.log(y)
+        </script>
+
+        <script id="ch0104/20">
+            let a = + (prompt("please input a"))
+            let b = + (prompt("please input b"))
+            let c = + (prompt("please input c"))
+
+            let x1 = ((-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a)).toFixed(5)
+            let x2 = ((-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a)).toFixed(5)
+
+            if (b * b == 4 * a * c) {
+                console.log("x1=x2=" + x2)
+            }
+            else if (b * b > 4 * a * c) {
+               console.log("x1=" + x1 + ";" + "x2=" + x2)
+            }
+            else if (b * b < 4 * a * c) {
+                let x1 = (-b / (2 * a)).toFixed(5) + "+" + ((Math.sqrt(4 * a * c - b * b )) / (2 * a)).toFixed(5) + "i"
+                let x2 = (-b / (2 * a)).toFixed(5) + "-" + ((Math.sqrt(4 * a * c - b * b )) / (2 * a)).toFixed(5) + "i"
+                console.log("x1=" + x1 + ";" + "x2=" + x2)
+            }
+        </script>
+
+
+        <script id="ch0104/21">
+            var n = + (prompt("please input n"))
+            var x = + (prompt("please input x"))
+            var y = + (prompt("please input y"))
+
+
+            var left = n - Math.ceil((1 / x) * y)
+
+            console.log(left)
+        </script>
+    </body>
+</html>
