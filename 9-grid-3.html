@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+        * {
+            background-color: rgba(0,0,0,0.08);
+        }
+
+        div {
+            width: 170px;
+            /* border: 8px solid; */
+            padding-bottom: 5px;
+            overflow: hidden;
+            /* display: flow-root; */
+        }
+
+        /* 已经浮动了就不用设置 inline-block 了 */
+        span {
+            float: left;
+            width: 50px;
+            height: 50px;
+            border: 5px solid blue;
+            margin: 0 -5px -5px 0;
+            position: relative;
+        }
+        span:hover {
+            border-color: red;
+            z-index: 1;
+        }
+        </style>
+    </head>
+    <body>
+        <div>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <span>7</span>
+          <span>8</span>
+          <span>9</span>
+        </div>
+    </body>
+</html>

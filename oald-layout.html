@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+        * {
+            background-color: rgba(0,0,0,0.08);
+            /* box-sizing: border-box; */
+        }
+
+        html, body {
+            margin : 0;
+            height : 100%;
+        }
+
+        div#wrapper{
+            height : 100%;
+            font-size : 0;
+        }
+
+        div * {
+            font-size : 16px;
+        }
+
+        div > aside {
+          width: 20%;
+          height: 100%;
+          display: inline-block;
+        }
+
+        div > main {
+            width : 40%;
+            height : 100%;
+            display : inline-block;
+            background-color: tan;
+            position: relative;
+        }
+
+        .a {
+            background-color : red;
+        }
+
+        .b {
+            background-color : lightgreen;
+        }
+
+        .c {
+            background-color : lightblue;
+        }
+
+        header {
+            background-color : blue;
+            /* height : 100px; */
+            /* position: absolute; */
+            width :100%;
+            /* height: 5vw; */
+        }
+
+        header .placeholder {
+            padding-top : 20%;
+        }
+
+        main .content {
+            top : 0;
+            margin-top : 20%;
+            background-color : olive;
+            /* height : 40px; */
+            position: absolute;
+            bottom : 0;
+            width : 100%;
+        }
+        </style>
+    </head>
+    <body>
+        <div id = "wrapper">
+            <aside class="a"></aside>
+            <main>
+              <header>
+                <div class="placeholder"></div>
+              </header>
+              <div class="content">aaaa</div>
+            </main>
+            <aside class="b"></aside>
+            <aside class="c"></aside>
+        </div>
+    </body>
+</html>

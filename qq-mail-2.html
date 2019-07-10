@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+        * {
+            background-color: rgba(0,0,0,0.08);
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+        
+        div {
+            height: 100%;
+        }
+
+        header {
+            height : 100px;
+            background-color : tan;
+            border-bottom : 3px solid;
+        }
+
+        section {
+            height : calc(100% - 100px);
+            font-size : 0;
+        }
+
+        section * {
+            font-size : 16px;
+        }
+
+        aside {
+            width : 200px;
+            height : 100%;
+            border-right: 3px solid;
+            background-color: aqua;
+            display : inline-block;
+            vertical-align : bottom;
+        }
+
+        main {
+            width : calc(100% - 200px);
+            height : 100%;
+            background-color: olive;
+            display : inline-block;
+            vertical-align : bottom;
+        }
+        </style>
+    </head>
+    <body>
+        <!-- 通过行内元素来做 -->
+        <!-- 主要就是用那个inline-block -->
+        <div>
+            <header>bbbccc</header>
+            <section>
+                <aside>aaa</aside>
+                <main>bbb</main>
+            </section>
+        </div>
+    </body>
+</html>

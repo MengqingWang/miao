@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QQ mail</title>
+    <style>
+    /* 主要用了绝对定位 相对定位这些 */
+    * {
+        background-color: rgba(0,0,0,0.08);
+    }
+
+    html, body {
+        margin: 0;
+        height: 100%;
+    }
+
+    div {
+        height: 100%;
+        position: relative;
+    }
+
+    div header {
+        position: absolute;
+        height: 100px;
+        width:100%;
+        background-color: green;
+    }
+
+    div aside {
+        background-color: red;
+        width:200px;
+        top:100px;
+        bottom: 0;
+        position: absolute;
+    }
+
+    div main {
+        background-color: olive;
+        position: absolute;
+        right :0;
+        bottom: 0;
+        left:200px;
+        /* margin: auto;
+        width : 100px;
+        height : 200px; */
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <header>header</header>
+        <aside>ee</aside>
+        <main>aaaa</main>
+    </div>
+
+</body>
+</html>

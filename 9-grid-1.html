@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    <style>
+    * {
+        background-color : rgba(0,0,0,0.08);
+    }
+
+    table {
+        border-collapse : collapse;
+    }
+
+    tr {
+        border:5px solid blue;
+    }
+
+    col {
+        /* border:5px solid lime; */
+        border:5px solid blue;
+    }
+
+    td {
+        width : 50px;
+        height : 50px;
+        text-align : center;
+        /* border: 5px solid blue; */
+        /* 加入上面这句防止浏览器回流  回流耗时 */
+    }
+
+    td:hover {
+        border:5px solid red;
+    }
+
+    /*
+    * {
+        background-color : rgba(0,0,0,0.08);
+    }
+
+    table {
+        border-collapse : collapse;
+    }
+    td {
+        width : 50px;
+        height : 50px;
+        text-align : center;
+        border:1px ridge blue;
+    }
+
+    td:hover {
+        border:1px solid red;
+    } */
+    /* 或者采用1px这种 实现边框胜出  ridge是相框边框*/
+    </style>
+    </head>
+    <body>
+        <table>
+            <col>
+            <col>
+            <col>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

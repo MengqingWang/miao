@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    <style media="screen">
+    * {
+        background-color: rgba(0,0,0,0.08);
+    }
+
+
+    div {
+        width: 170px;
+        padding-bottom: 5px;
+        xheight: 170px;
+        font-size: 0;
+    }
+
+    div * {
+        /* font-size: initial; */
+        all: initial;
+    }
+
+    span {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin-right: -5px;
+        margin-bottom: -5px;
+        border: 5px solid blue;
+        position: relative;
+    }
+
+    span:hover {
+        border-color: red;
+        z-index: 1;
+    }
+    </style>
+    </head>
+    <body>
+        <!-- 用span来做 后面的元素盖住了前面的元素  所以设置层级-->
+        <div>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+          <span>4</span>
+          <span>5</span>
+          <span>6</span>
+          <span>7</span>
+          <span>8</span>
+          <span>9</span>
+        </div>
+    </body>
+</html>
