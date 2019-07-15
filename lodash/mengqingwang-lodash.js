@@ -8,19 +8,19 @@ iteratee: function(action) {
     } else if (typeof action === 'object') {
         return matchProperty(action)
     } else return action
-}
+},
 
 property: function(str) {
     return function(obj) {
         return obj[str]
     }
-}
+},
 
 matches: function(arr) {
     return function (obj) {
         return obj[arr[0]] === arr[1]
     }
-}
+},
 
 matchProperty: function(m) {
     return function (obj) {
@@ -31,7 +31,7 @@ matchProperty: function(m) {
         }
         return true
     }
-}
+},
 
 findIndex: function(array, predicate, fromIndex = 0) {
     predicate = iteratee(predicate)
