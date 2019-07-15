@@ -14,7 +14,7 @@
 //     }
 //
 // }
-var mengqingwang = (function () {
+var mengqingwang = function () {
 
 function iteratee(action) {
     if (typeof action === 'string') {
@@ -59,4 +59,4 @@ function findIndex(array, predicate, fromIndex = 0) {
     return -1
 }
 
-})()
+}()
