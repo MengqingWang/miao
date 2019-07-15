@@ -1,17 +1,24 @@
-function chunk(array, size = 1) {
-    var left = array.length
-    var i = 0
-    var result = []
-    while (left >= size) {
-        var arr = array.slice(i, i + size)
-        result.push(arr)
-        i = i + size
-        left = left - size
+function findIn(s1, s2) {
+    /* s2 长度为 1 */
+    let index = -1
+    for (var i = 0; i < s1.length; i++) {
+        var n = s1[i]
+        if (n === s2) {
+            index = i
+            break
+        }
     }
-    if (left == 0) {
-        return result
-    } else {
-        result.push(array.slice(i))
-        return result
-    }
+    return index
 }
+
+function difference(array, values) {
+    var result = []
+    for (var i = 0; i < array.length; i++) {
+        if(findIn(values, array[i]) == -1) {
+            result.push(array[i])
+        }
+    }
+    return result
+}
+
+console.log(difference([2, 1], [2, 3]))
