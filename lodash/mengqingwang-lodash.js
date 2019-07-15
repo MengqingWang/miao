@@ -52,7 +52,7 @@ function chunk(array, size = 1) {
 }
 
 function compact(array) {
-    return ary.filter(it => it)
+    return array.filter(it => it)
 }
 
 function findIndex(array, predicate, fromIndex = 0) {
