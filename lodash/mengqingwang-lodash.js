@@ -1,6 +1,6 @@
-var mengqingwang = {
+var mengqingwang = function() {
 
-iteratee: function(action) {
+function iteratee(action) {
     if (typeof action === 'string') {
         return property(action)
     } else if (Array.isArray(action)) {
@@ -8,21 +8,21 @@ iteratee: function(action) {
     } else if (typeof action === 'object') {
         return matchProperty(action)
     } else return action
-},
+}
 
-property: function(str) {
+function property(str) {
     return function(obj) {
         return obj[str]
     }
-},
+}
 
-matches: function(arr) {
+function matches(arr) {
     return function (obj) {
         return obj[arr[0]] === arr[1]
     }
-},
+}
 
-matchProperty: function(m) {
+function matchProperty(m) {
     return function (obj) {
         for (let key in m) {
             if (obj[key] != m[key]) {
@@ -31,9 +31,9 @@ matchProperty: function(m) {
         }
         return true
     }
-},
+}
 
-findIndex: function(array, predicate, fromIndex = 0) {
+function findIndex(array, predicate, fromIndex = 0) {
     predicate = iteratee(predicate)
     for (var i = fromIndex; i < array.length; i++) {
         if (predicate(array[i])) {
@@ -43,4 +43,12 @@ findIndex: function(array, predicate, fromIndex = 0) {
     return -1
 }
 
+return {
+    iteratee,
+    property,
+    matches,
+    matchProperty,
+    findIndex,
 }
+
+}()
