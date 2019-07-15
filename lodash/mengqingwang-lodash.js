@@ -14,9 +14,9 @@
 //     }
 //
 // }
-var mengqingwang = function () {
+var mengqingwang = {
 
-function iteratee(action) {
+iteratee: function(action) {
     if (typeof action === 'string') {
         return property(action)
     } else if (Array.isArray(action)) {
@@ -26,19 +26,19 @@ function iteratee(action) {
     } else return action
 }
 
-function property(str) {
+property: function(str) {
     return function(obj) {
         return obj[str]
     }
 }
 
-function matches(arr) {
+matches: function(arr) {
     return function (obj) {
         return obj[arr[0]] === arr[1]
     }
 }
 
-function matchProperty(m) {
+matchProperty: function(m) {
     return function (obj) {
         for (let key in m) {
             if (obj[key] != m[key]) {
@@ -49,7 +49,7 @@ function matchProperty(m) {
     }
 }
 
-function findIndex(array, predicate, fromIndex = 0) {
+findIndex: function(array, predicate, fromIndex = 0) {
     predicate = iteratee(predicate)
     for (var i = fromIndex; i < array.length; i++) {
         if (predicate(array[i])) {
@@ -59,4 +59,4 @@ function findIndex(array, predicate, fromIndex = 0) {
     return -1
 }
 
-}()
+}
