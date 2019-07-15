@@ -1,31 +1,17 @@
-function baseFindIndex(array, predicate, fromIndex, fromRight) {
-  var length = array.length,
-      index = fromIndex + (fromRight ? 1 : -1);
-
-  while ((fromRight ? index-- : ++index < length)) {
-    if (predicate(array[index], index, array)) {
-      return index;
+function chunk(array, size = 1) {
+    var left = array.length
+    var i = 0
+    var result = []
+    while (left >= size) {
+        var arr = array.slice(i, i + size)
+        result.push(arr)
+        i = i + size
+        left = left - size
     }
-  }
-  return -1;
+    if (left == 0) {
+        return result
+    } else {
+        result.push(array.slice(i))
+        return result
+    }
 }
-
-function findIndex(array, predicate, fromIndex) {
-  var length = array == null ? 0 : array.length;
-  if (!length) {
-    return -1;
-  }
-  var index = fromIndex == null ? 0 : toInteger(fromIndex);
-  if (index < 0) {
-    index = nativeMax(length + index, 0);
-  }
-  return baseFindIndex(array, getIteratee(predicate, 3), index);
-}
-
-var users = [
-  { 'user': 'barney',  'active': false },
-
-  { 'user': 'fred',    'active': false },
-
-  { 'user': 'pebbles', 'active': true }
-];

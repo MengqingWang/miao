@@ -33,6 +33,28 @@ function matchProperty(m) {
     }
 }
 
+function chunk(array, size = 1) {
+    var left = array.length
+    var i = 0
+    var result = []
+    while (left >= size) {
+        var arr = array.slice(i, i + size)
+        result.push(arr)
+        i = i + size
+        left = left - size
+    }
+    if (left == 0) {
+        return result
+    } else {
+        result.push(array.slice(i))
+        return result
+    }
+}
+
+function compact(array) {
+    return ary.filter(it => it)
+}
+
 function findIndex(array, predicate, fromIndex = 0) {
     predicate = iteratee(predicate)
     for (var i = fromIndex; i < array.length; i++) {
@@ -48,6 +70,8 @@ return {
     property,
     matches,
     matchProperty,
+    chunk,
+    compact,
     findIndex,
 }
 
