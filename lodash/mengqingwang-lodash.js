@@ -68,10 +68,16 @@ function findIn(s1, s2) {
     return index
 }
 
-function difference(array, values) {
+function difference(array, ...values) {
+    //要排除的数组不止一个
     var result = []
+    var newvalues = values[0]
+    for (var j = 1 ; j < values.length; j++) {
+        newvalues = newvalues.concat(values[j])
+    }
+    console.log(newvalues)
     for (var i = 0; i < array.length; i++) {
-        if(findIn(values, array[i]) == -1) {
+        if(findIn(newvalues, array[i]) == -1) {
             result.push(array[i])
         }
     }
@@ -88,6 +94,63 @@ function findIndex(array, predicate, fromIndex = 0) {
     return -1
 }
 
+// function flatten(ary) {
+//     var result = []
+//     for (var item of ary) {
+//         if (Array.isArray(item)) {
+//             for (var val of item) {
+//                 result.push(val)
+//             }
+//         } else {
+//             result.push(item)
+//         }
+//     }
+//     return result
+// }
+
+function flatten(ary) {
+    var result = []
+    for (var item of ary) {
+        if (Array.isArray(item)) {
+            result.push(...item)
+        } else {
+            result.push(item)
+        }
+    }
+    return result
+}
+
+function flattenDeep(ary) {
+    var result = []
+    for (var item of ary) {
+        if (Array.isArray(item)) {
+            //递归
+            var flattedItem = flattenDeep(item)
+            result.push(...flattedItem)
+        } else {
+            result.push(item)
+        }
+    }
+    return result
+}
+
+function flattenDepth(ary, depth = 1) {
+    if (depth == 0) {
+        return ary.slice()
+    }
+    var result = []
+    for (var item of ary) {
+        if (Array.isArray(item)) {
+            //递归
+            var flattedItem = flattenDepth(item, depth - 1)
+            result.push(...flattedItem)
+        } else {
+            result.push(item)
+        }
+    }
+    return result
+}
+
 return {
     iteratee,
     property,
@@ -98,6 +161,9 @@ return {
     findIn,
     difference,
     findIndex,
+    flatten,
+    flattenDeep,
+    flattenDepth,
 }
 
 }()
