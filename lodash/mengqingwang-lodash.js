@@ -10,9 +10,9 @@ function iteratee(action) {
     } else return action
 }
 
-function property(str) {
+function property(propName) {
     return function(obj) {
-        return obj[str]
+        return obj[propName]
     }
 }
 
@@ -94,20 +94,6 @@ function findIndex(array, predicate, fromIndex = 0) {
     return -1
 }
 
-// function flatten(ary) {
-//     var result = []
-//     for (var item of ary) {
-//         if (Array.isArray(item)) {
-//             for (var val of item) {
-//                 result.push(val)
-//             }
-//         } else {
-//             result.push(item)
-//         }
-//     }
-//     return result
-// }
-
 function flatten(ary) {
     var result = []
     for (var item of ary) {
@@ -151,6 +137,117 @@ function flattenDepth(ary, depth = 1) {
     return result
 }
 
+function filter(ary,predicate) {
+    var result = []
+    for (var i = 0; i < ary.length; i++) {
+        if (predicate(ary[i], i , ary)) {
+            result.push(ary[i])
+        }
+    return result
+}
+
+function every(ary, predicate) {
+    for (var i = 0; i < ary.length; i++) {
+        if (!predicate(ary[i], i , ary)) {
+            return false
+        }
+    }
+    return true
+}
+
+function some(ary, predicate) {
+    for (var i = 0; i < ary.length; i++) {
+        if (predicate(ary[i], i , ary)) {
+            return true
+        }
+    }
+    return false
+}
+
+function negate(f) {
+    return function(...args) {
+        return !f(...args)
+    }
+}
+
+//返回一个函数   它调用原函数的时候参数顺序是倒过来的   但其实对求值结果没有什么影响
+function flip(func) {
+    return function(...args) {
+        return func(...args.reverse())
+    }
+}
+
+//调用func 函数n次      之后不再调用  返回第n次的结果
+function before(n, func) {
+    var times = 0
+    var lastResult
+    return function(...args) {
+        times++
+        if (times < n) {
+            return lastResult = func(...args)
+        } else {
+            return lastResult
+        }
+    }
+}
+
+//调用func 函数n次      之后不再调用  返回第n次的结果
+function after(n, func) {
+    var times = 0
+    return function(...args) {
+        times++
+        if (times < n) {
+            return
+        } else {
+            return func(...args)
+        }
+    }
+}
+
+//调用func最多n参数   n后面的参数将被忽略
+function ary(f, n = f.length) {
+    return function (...args) {
+        return f(...args.slice(0,n))
+    }
+}
+
+//创建一个最多接受一个参数的函数，忽略任何其他参数。
+function unary(f) {
+    return ary(f, 1)
+}
+
+function spread(f) {
+    return function(ary) {
+        return f(...ary)
+    }
+}
+
+function memoize(f) {
+    var cache = {}
+    return function(arg) {
+        if (arg in cache) {
+            return cache[arg]
+        } else {
+            return cache[arg] = f(arg)
+        }
+    }
+}
+
+//遍历数组，将符合条件的数据放在一起，最后返回一个分组后的二维数组
+//https://blog.csdn.net/mafan121/article/details/83418116
+function groupBy(ary, predicate) {
+    var result = {}
+    for (var i = 0; i < ary.length; i++) {
+        var groupKey = predicate(ary[i], i , ary)
+        if (groupKey in result) {
+            result[groupKey].push(ary[i])
+        } else {
+            result[groupKey] = [ary[i]]
+        }
+    }
+    return result
+}
+
 return {
     iteratee,
     property,
@@ -164,6 +261,18 @@ return {
     flatten,
     flattenDeep,
     flattenDepth,
+    filter,
+    every,
+    some,
+    negate,
+    flip,
+    before,
+    after,
+    ary,
+    unary,
+    spread,
+    memoize,
+    groupBy,
 }
 
 }()
