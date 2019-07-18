@@ -138,6 +138,7 @@ function flattenDepth(ary, depth = 1) {
 }
 
 function filter(ary,predicate) {
+    predicate = iteratee(predicate)
     var result = []
     for (var i = 0; i < ary.length; i++) {
         if (predicate(ary[i], i , ary)) {
