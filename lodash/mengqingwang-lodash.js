@@ -138,6 +138,7 @@ function flattenDepth(ary, depth = 1) {
 }
 
 function filter(ary,predicate) {
+    //这句话没用
     // predicate = iteratee(predicate)
     var result = []
     for (var i = 0; i < ary.length; i++) {
@@ -149,6 +150,7 @@ function filter(ary,predicate) {
 }
 
 function every(ary, predicate) {
+    //这句话有用   虽然我也不知道是什么意思
     predicate = iteratee(predicate)
     for (var i = 0; i < ary.length; i++) {
         if (!predicate(ary[i], i , ary)) {
@@ -159,6 +161,8 @@ function every(ary, predicate) {
 }
 
 function some(ary, predicate) {
+    //这句话有用   虽然我也不知道是什么意思
+    predicate = iteratee(predicate)
     for (var i = 0; i < ary.length; i++) {
         if (predicate(ary[i], i , ary)) {
             return true
@@ -239,6 +243,8 @@ function memoize(f) {
 //遍历数组，将符合条件的数据放在一起，最后返回一个分组后的二维数组
 //https://blog.csdn.net/mafan121/article/details/83418116
 function groupBy(ary, predicate) {
+    //这句话有用   虽然我也不知道是什么意思
+    predicate = iteratee(predicate)
     var result = {}
     for (var i = 0; i < ary.length; i++) {
         var groupKey = predicate(ary[i], i , ary)
