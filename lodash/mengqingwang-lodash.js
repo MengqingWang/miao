@@ -144,6 +144,7 @@ function filter(ary,predicate) {
             result.push(ary[i])
         }
     return result
+    }
 }
 
 function every(ary, predicate) {

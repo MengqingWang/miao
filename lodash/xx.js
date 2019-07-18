@@ -98,6 +98,7 @@ function filter(ary,predicate) {
             result.push(ary[i])
         }
     return result
+    }
 }
 
 function every(ary, predicate) {
@@ -132,13 +133,13 @@ function some(ary, predicate) {
 
 //用some写every  用every写some
 function some(ary, predicate) {
-    return !every(ary, function(...args)) {
+    return !every(ary, function(...args) {
         return !predicate(...args)
     })
 }
 
 function every(ary, predicate) {
-    return !some(ary, function(...args)) {
+    return !some(ary, function(...args) {
         return !predicate(...args)
     })
 }
@@ -245,15 +246,3 @@ function groupBy(ary, predicate) {
     }
     return result
 }
-
-
-
-
-
-
-
-
-
-
-
-//
