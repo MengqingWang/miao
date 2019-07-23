@@ -75,7 +75,6 @@ function difference(array, ...values) {
     for (var j = 1 ; j < values.length; j++) {
         newvalues = newvalues.concat(values[j])
     }
-    console.log(newvalues)
     for (var i = 0; i < array.length; i++) {
         if(findIn(newvalues, array[i]) == -1) {
             result.push(array[i])
@@ -83,6 +82,67 @@ function difference(array, ...values) {
     }
     return result
 }
+
+function differenceBy(array, ...values) {
+    //有多种情况要判断
+    if (Array.isArray(values[values.length - 1]) {
+        return difference(array, ...values)
+    }
+    var result = []
+    var func = iteratee(values[values.length - 1])
+    var newvalues = func(values[0])
+    for (var j = 1 ; j < values.length - 1; j++) {
+        newvalues = newvalues.concat(func(values[j]))
+    }
+    for (var i = 0; i < array.length; i++) {
+        if(findIn(newvalues, func(array[i])) == -1) {
+            result.push(array[i])
+        }
+    }
+    return result
+}
+
+// function differenceBy(array, ...arg) {
+//     if (Object.prototype.toString.call(arg[arg.length - 1]) === "[object Array]") {
+//         return difference(array, ...arg);
+//     }
+//     var result = [];
+//     var func = iteratee(arg[arg.length - 1]);
+//     //console.log(func,arg[arg.length-1],arg);
+//     var arr = [];
+//     for (var i = 0; i < arg.length - 1; i++) {
+//         for (var j = 0; j < arg[i].length; j++) {
+//             arr.push(func(arg[i][j]));
+//         }
+//     }
+//     console.log(arr, func);
+//     for (var z = 0; z < array.length; z++) {
+//         if (!arr.includes(func(array[z]))) {
+//             result.push(array[z]);
+//         }
+//     }
+//     return result;
+// }
+//
+// function differenceBy(array, ...values) {
+//     if (Array.isArray(values[values.length - 1]) == true) {
+//         return difference(array, ...values)
+//     }
+//     var val = values.reduce((res, cur) => {
+//         return res.concat(cur)
+//     })
+//     var iteratee = val.pop()
+//     let func = 0
+//     if (typeof iteratee == 'string') {
+//         func = obj => obj[iteratee]
+//     }
+//     if (typeof iteratee == 'function') {
+//         func = obj => iteratee(obj)
+//     }
+//     val = val.map(func)
+//     return array.filter(item => !val.includes(func(item)))
+//
+// }
 
 function findIndex(array, predicate, fromIndex = 0) {
     predicate = iteratee(predicate)
@@ -266,6 +326,7 @@ return {
     compact,
     findIn,
     difference,
+    differenceBy,
     findIndex,
     flatten,
     flattenDeep,
