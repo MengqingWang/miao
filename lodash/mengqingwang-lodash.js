@@ -85,7 +85,7 @@ function difference(array, ...values) {
 
 function differenceBy(array, ...values) {
     //有多种情况要判断
-    if (Array.isArray(values[values.length - 1]) {
+    if (Array.isArray(values[values.length - 1])) {
         return difference(array, ...values)
     }
     var result = []
