@@ -219,18 +219,18 @@ function intersection(arrays) {
 }
 
 
-function findIn(s1, s2) {
-    /* s2 长度为 1 */
-    let index = -1
-    for (var i = 0; i < s1.length; i++) {
-        var n = s1[i]
-        if (n === s2) {
-            index = i
-            break
-        }
-    }
-    return index
-}
+// function findIn(s1, s2) {
+//     /* s2 长度为 1 */
+//     let index = -1
+//     for (var i = 0; i < s1.length; i++) {
+//         var n = s1[i]
+//         if (n === s2) {
+//             index = i
+//             break
+//         }
+//     }
+//     return index
+// }
 
 function filter(ary,predicate) {
     //这句话没用
