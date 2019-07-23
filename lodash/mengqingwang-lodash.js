@@ -106,6 +106,20 @@ function drop(array, n = 1) {
     return array.slice(n)
 }
 
+function dropRight(array, n = 1) {
+    if (n >= array.length) {
+        n = array.length
+    }
+    return array.slice(0, array.length - n)
+}
+
+function fill(array, value, start = 0, end = array.length) {
+    for (let i = start; i < end; i++) {
+        ary[i] = value
+    }
+    return array
+}
+
 function flatten(ary) {
     var result = []
     for (var item of ary) {
@@ -280,6 +294,8 @@ return {
     difference,
     differenceBy,
     drop,
+    dropRight,
+    fill,
     findIndex,
     flatten,
     flattenDeep,
