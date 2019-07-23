@@ -115,29 +115,29 @@ function dropRight(array, n = 1) {
 
 function fill(array, value, start = 0, end = array.length) {
     for (let i = start; i < end; i++) {
-        ary[i] = value
+        array[i] = value
     }
     return array
 }
 
-// function findIndex(array, predicate, fromIndex = 0) {
-//     predicate = iteratee(predicate)
-//     for (var i = fromIndex; i < array.length; i++) {
-//         if (predicate(array[i])) {
-//             return i
-//         }
-//     }
-//     return -1;
-// }
-
-function findLastIndex(array, predicate, fromIndex = array.length - 1) {
-    predicate = iteratee(predicate);
-    for (var i = fromIndex; i < array.length; i--) {
+function findIndex(array, predicate, fromIndex = 0) {
+    predicate = iteratee(predicate)
+    for (var i = fromIndex; i < array.length; i++) {
         if (predicate(array[i])) {
-            return i;
+            return i
         }
     }
     return -1;
+}
+
+function findLastIndex(array, predicate, fromIndex = array.length - 1) {
+    predicate = iteratee(predicate)
+    for (var i = fromIndex; i < array.length; i--) {
+        if (predicate(array[i])) {
+            return i
+        }
+    }
+    return -1
 }
 
 function flatten(ary) {
@@ -209,7 +209,8 @@ function indexOf(array, value, fromIndex = 0) {
 }
 
 function initial(array) {
-    return array.pop()
+    array.pop()
+    return array
 }
 
 function intersection(arrays) {
@@ -365,7 +366,7 @@ return {
     drop,
     dropRight,
     fill,
-    // findIndex,
+    findIndex,
     findLastIndex,
     flatten,
     flattenDeep,
