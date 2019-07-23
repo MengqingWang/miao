@@ -106,18 +106,6 @@ function drop(array, n = 1) {
     return array.slice(n)
 }
 
-function drop(array, n) {
-    if (arguments[1] === undefined) {
-        array.shift();
-        return array;
-    }
-    while (n) {
-        array.shift();
-        n--;
-    }
-    return array;
-}
-
 function flatten(ary) {
     var result = []
     for (var item of ary) {
