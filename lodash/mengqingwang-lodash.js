@@ -120,15 +120,15 @@ function fill(array, value, start = 0, end = array.length) {
     return array
 }
 
-function findIndex(array, predicate, fromIndex = 0) {
-    predicate = iteratee(predicate);
-    for (var i = fromIndex; i < array.length; i++) {
-        if (predicate(array[i])) {
-            return i;
-        }
-    }
-    return -1;
-}
+// function findIndex(array, predicate, fromIndex = 0) {
+//     predicate = iteratee(predicate)
+//     for (var i = fromIndex; i < array.length; i++) {
+//         if (predicate(array[i])) {
+//             return i
+//         }
+//     }
+//     return -1;
+// }
 
 function findLastIndex(array, predicate, fromIndex = array.length - 1) {
     predicate = iteratee(predicate);
@@ -365,7 +365,7 @@ return {
     drop,
     dropRight,
     fill,
-    findIndex,
+    // findIndex,
     findLastIndex,
     flatten,
     flattenDeep,
