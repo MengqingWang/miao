@@ -120,6 +120,26 @@ function fill(array, value, start = 0, end = array.length) {
     return array
 }
 
+function findIndex(array, predicate, fromIndex = 0) {
+    predicate = iteratee(predicate);
+    for (var i = fromIndex; i < array.length; i++) {
+        if (predicate(array[i])) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+function findLastIndex(array, predicate, fromIndex = array.length - 1) {
+    predicate = iteratee(predicate);
+    for (var i = fromIndex; i < array.length; i--) {
+        if (predicate(array[i])) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 function flatten(ary) {
     var result = []
     for (var item of ary) {
@@ -161,6 +181,55 @@ function flattenDepth(ary, depth = 1) {
         }
     }
     return result
+}
+
+function fromPairs(pairs) {
+    var obj = {}
+    for (var i = 0; i < pairs.length; i++) {
+        obj[pairs[i][0]] = pairs[i][1]
+    }
+    return obj
+}
+
+function head(array) {
+    if (array.length == 0) {
+        return undefined
+    } else return array[0]
+}
+
+function indexOf(array, value, fromIndex = 0) {
+    if (fromIndex < 0) {
+        fromIndex = fromIndex + array.length
+    }
+    for (var i = fromIndex; i < array.length; i++) {
+        if (array[i] === value)
+            return i
+    }
+    return -1
+}
+
+function initial(array) {
+    return array.pop()
+}
+
+function intersection(arrays) {
+    var arr = arrays[0]
+
+
+}
+
+
+function findIn(s1, s2) {
+    /* s2 长度为 1 */
+    let index = -1
+    for (var i = 0; i < s1.length; i++) {
+        var n = s1[i]
+        if (n === s2) {
+            index = i
+            break
+        }
+    }
+    return index
 }
 
 function filter(ary,predicate) {
@@ -297,9 +366,14 @@ return {
     dropRight,
     fill,
     findIndex,
+    findLastIndex,
     flatten,
     flattenDeep,
     flattenDepth,
+    fromPairs,
+    head,
+    indexOf,
+    initial,
     filter,
     every,
     some,

@@ -1,4 +1,4 @@
-// function flatten(ary) {
+h// function flatten(ary) {
 //     var result = []
 //     for (var item of ary) {
 //         if (Array.isArray(item)) {
