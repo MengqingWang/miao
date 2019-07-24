@@ -213,9 +213,9 @@ function initial(array) {
     return array
 }
 
-function intersection(arrays) {
-    //有点烦这个   先空着
-}
+// function intersection(arrays) {
+//     //有点烦这个   先空着
+// }
 
 
 function join(array, separator=',') {
@@ -233,7 +233,7 @@ function last(array) {
     return array.pop()
 }
 
-function lastIndexOf(array, value, fromIndex=array.length-1) {
+function lastIndexOf(array, value, fromIndex = array.length - 1) {
     if (fromIndex < 0) {
         fromIndex = fromIndex + array.length
     }
@@ -285,6 +285,7 @@ function sortedIndex(array, value) {
             break
         }
     return index
+    }
 }
 
 function sortedIndexOf(array, value) {
@@ -304,6 +305,7 @@ function sortedLastIndex(array, value) {
             break
         }
     return index
+    }
 }
 
 function sortedLastIndexOf(array, value) {
