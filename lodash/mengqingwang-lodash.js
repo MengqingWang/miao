@@ -198,9 +198,9 @@ function head(array) {
 }
 
 function indexOf(array, value, fromIndex = 0) {
-    if (fromIndex < 0) {
-        fromIndex = fromIndex + array.length
-    }
+    // if (fromIndex < 0) {
+    //     fromIndex = fromIndex + array.length
+    // }
     for (var i = fromIndex; i < array.length; i++) {
         if (array[i] === value)
             return i
@@ -219,12 +219,12 @@ function initial(array) {
 
 
 function join(array, separator=',') {
-    let s = array[0]
+    var s = array[0]
     for (let i = 1; i < array.length; i++) {
         // 从下标为 1 的元素开始, 把数组中每个元素拿出来
         // 加上分隔符之后再累加到 s 上
         let e = array[i]
-        s += (separator + e)
+        s += (separator.toString() + e)
     }
     return s
 }
@@ -234,10 +234,10 @@ function last(array) {
 }
 
 function lastIndexOf(array, value, fromIndex = array.length - 1) {
-    if (fromIndex < 0) {
-        fromIndex = fromIndex + array.length
-    }
-    for (var i = fromIndex; i < array.length; i--) {
+    // if (fromIndex < 0) {
+    //     fromIndex = fromIndex + array.length
+    // }
+    for (var i = fromIndex; i >= 0; i--) {
         if (array[i] === value)
             return i
     }
@@ -252,21 +252,27 @@ function nth(array, n = 0) {
 }
 
 function pull(array, ...values) {
+    var result = []
     for (var i = 0; i < array.length; i++) {
-        if (findIn(values, array[i])) {
-            array.splice(i, 1)
+        if (findIn(values, array[i]) == -1) {
+            result.push(array[i])
+            //splice会改变原数组   进而改变下标  所以这题不能用splice
+            // array.splice(i, 1)
         }
     }
-    return array
+    return result
 }
 
 function pullAll(array, values) {
+    var result = []
     for (var i = 0; i < array.length; i++) {
-        if (findIn(values, array[i])) {
-            array.splice(i, 1)
+        if (findIn(values, array[i]) == -1) {
+            result.push(array[i])
+            //splice会改变原数组   进而改变下标  所以这题不能用splice
+            // array.splice(i, 1)
         }
     }
-    return array
+    return result
 }
 
 function reverse(array) {
@@ -284,8 +290,8 @@ function sortedIndex(array, value) {
             index = i + 1
             break
         }
-    return index
     }
+    return index
 }
 
 function sortedIndexOf(array, value) {
@@ -304,8 +310,8 @@ function sortedLastIndex(array, value) {
             index = i + 1
             break
         }
-    return index
     }
+    return index
 }
 
 function sortedLastIndexOf(array, value) {
@@ -339,7 +345,7 @@ function takeRight(array, n = 1) {
     if (n > array.length) {
         n = array.length
     }
-    return array.slice(n - array.length)
+    return array.slice(array.length - n)
 }
 
 // function union(...array) {
