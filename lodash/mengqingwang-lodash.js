@@ -214,23 +214,134 @@ function initial(array) {
 }
 
 function intersection(arrays) {
-    var arr = arrays[0]
-
-
+    //有点烦这个   先空着
 }
 
 
-// function findIn(s1, s2) {
-//     /* s2 长度为 1 */
-//     let index = -1
-//     for (var i = 0; i < s1.length; i++) {
-//         var n = s1[i]
-//         if (n === s2) {
-//             index = i
-//             break
-//         }
-//     }
-//     return index
+function join(array, separator=',') {
+    let s = array[0]
+    for (let i = 1; i < array.length; i++) {
+        // 从下标为 1 的元素开始, 把数组中每个元素拿出来
+        // 加上分隔符之后再累加到 s 上
+        let e = array[i]
+        s += (separator + e)
+    }
+    return s
+}
+
+function last(array) {
+    return array.pop()
+}
+
+function lastIndexOf(array, value, fromIndex=array.length-1) {
+    if (fromIndex < 0) {
+        fromIndex = fromIndex + array.length
+    }
+    for (var i = fromIndex; i < array.length; i--) {
+        if (array[i] === value)
+            return i
+    }
+    return -1
+}
+
+function nth(array, n = 0) {
+    if (n < 0) {
+        n = n + array.length
+    }
+    return array[n]
+}
+
+function pull(array, ...values) {
+    for (var i = 0; i < array.length; i++) {
+        if (findIn(values, array[i])) {
+            array.splice(i, 1)
+        }
+    }
+    return array
+}
+
+function pullAll(array, values) {
+    for (var i = 0; i < array.length; i++) {
+        if (findIn(values, array[i])) {
+            array.splice(i, 1)
+        }
+    }
+    return array
+}
+
+function reverse(array) {
+    var result = [];
+    for (var i = array.length - 1, i >= 0; i--) {
+        result.push(array[i])
+    }
+    return result;
+}
+
+function sortedIndex(array, value) {
+    var index = 0
+    for (var i = 0, i < array.length; i++) {
+        if (value >= array[i]) {
+            index = i + 1
+            break
+        }
+    return index
+}
+
+function sortedIndexOf(array, value) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+function sortedLastIndex(array, value) {
+    var index = 0
+    for (var i = array.length - 1, i >= 0; i--) {
+        if (value >= array[i]) {
+            index = i + 1
+            break
+        }
+    return index
+}
+
+function sortedLastIndexOf(array, value) {
+    for (var i = array.length - 1, i >= 0; i--) {
+        if (array[i] === value) {
+            return i
+        }
+    }
+    return -1
+}
+
+function sortedUniq(array) {
+    var result = []
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] !== array[i + 1]) {
+            result.push(array[i])
+        }
+    }
+    return result
+}
+
+function tail(array) {
+    return array.slice(1)
+}
+
+function take(array, n = 1) {
+    return array.slice(0, n)
+}
+
+function takeRight(array, n = 1) {
+    if (n > array.length) {
+        n = array.length
+    }
+    return array.slice(n - array.length)
+}
+
+// function union(...array) {
+//
 // }
 
 function filter(ary,predicate) {
@@ -375,6 +486,22 @@ return {
     head,
     indexOf,
     initial,
+    // intersection,
+    join,
+    last,
+    lastIndexOf,
+    nth,
+    pull,
+    pullAll,
+    reverse,
+    sortedIndex,
+    sortedIndexOf,
+    sortedLastIndex,
+    sortedLastIndexOf,
+    sortedUniq,
+    tail,
+    take,
+    takeRight,
     filter,
     every,
     some,
