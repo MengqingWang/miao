@@ -271,7 +271,7 @@ function pullAll(array, values) {
 
 function reverse(array) {
     var result = [];
-    for (var i = array.length - 1, i >= 0; i--) {
+    for (var i = array.length - 1; i >= 0; i--) {
         result.push(array[i])
     }
     return result;
@@ -279,7 +279,7 @@ function reverse(array) {
 
 function sortedIndex(array, value) {
     var index = 0
-    for (var i = 0, i < array.length; i++) {
+    for (var i = 0; i < array.length; i++) {
         if (value >= array[i]) {
             index = i + 1
             break
@@ -298,7 +298,7 @@ function sortedIndexOf(array, value) {
 
 function sortedLastIndex(array, value) {
     var index = 0
-    for (var i = array.length - 1, i >= 0; i--) {
+    for (var i = array.length - 1; i >= 0; i--) {
         if (value >= array[i]) {
             index = i + 1
             break
@@ -307,7 +307,7 @@ function sortedLastIndex(array, value) {
 }
 
 function sortedLastIndexOf(array, value) {
-    for (var i = array.length - 1, i >= 0; i--) {
+    for (var i = array.length - 1; i >= 0; i--) {
         if (array[i] === value) {
             return i
         }
