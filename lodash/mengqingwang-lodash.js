@@ -6,8 +6,8 @@ function iteratee(argument) {
             return object[argument]
         }
     } else if (Object.prototype.toString.call(argument) === "[object Object]") {
-        return function (object) {
-            for(var key of argument) {
+        return function (object) { //这里用for(var key of argument) 就不行
+            for(var key in argument) {
                 if(argument[key] !== object[key]) {
                     return false
                 }
@@ -24,7 +24,7 @@ function iteratee(argument) {
             return true
         }
     } else if (Object.prototype.toString.call(argument) === "[object RegExp]") {
-        return function (object) {
+        return function(object) {
             return argument.test(object)
         }
     } else if (Object.prototype.toString.call(argument) === "[object Function]") {

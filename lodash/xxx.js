@@ -145,7 +145,7 @@ function iteratee(argument) {
         }
     } else if (Object.prototype.toString.call(argument) === "[object Object]") {
         return function (object) {
-            for(var key of argument) {
+            for(var key in argument) {
                 if(argument[key] !== object[key]) {
                     return false
                 }
@@ -162,10 +162,28 @@ function iteratee(argument) {
             return true
         }
     } else if (Object.prototype.toString.call(argument) === "[object RegExp]") {
-        return function (object) {
+        return function(object) {
             return argument.test(object)
         }
     } else if (Object.prototype.toString.call(argument) === "[object Function]") {
         return argument
     }
 }
+
+function findIndex(array, predicate, fromIndex = 0) {
+    predicate = iteratee(predicate)
+    for (var i = fromIndex; i < array.length; i++) {
+        if (predicate(array[i])) {
+            return i
+        }
+    }
+    return -1;
+}
+
+var users = [
+  { 'user': 'barney',  'active': false },
+  { 'user': 'fred',    'active': false },
+  { 'user': 'pebbles', 'active': true }
+];
+
+console.log(findIndex(users, { 'user': 'fred', 'active': false }))
