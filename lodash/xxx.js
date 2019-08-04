@@ -142,16 +142,25 @@ function iteratee(argument) {
     if (Object.prototype.toString.call(argument) === "[object String]") {
         return function (object) {
             return object[argument]
-        } //如果 argument 是一个属性名，传入包含这个属性名的对象，回调返回对应属性名的值
-    } else if (Object.prototype.toString.call(argument) === "[object Array]"||Object.prototype.toString.call(argument) === "[object Object]") {
+        }
+    } else if (Object.prototype.toString.call(argument) === "[object Object]") {
         return function (object) {
-            for(var key in argument) {
+            for(var key of argument) {
                 if(argument[key] !== object[key]) {
                     return false
                 }
             }
             return true
-        } //如果 argument 是一个对象，传入的元素有相同的对象属性，回调返回 true。 其他情况返回 false。
+        }
+    } else if (Object.prototype.toString.call(argument) === "[object Array]") {
+        return function (object) {
+            for (var i = 0; i < argument.length - 1; i += 2) {
+                if (object[argument[i]] !== argument[i + 1]) {
+                    return false
+                }
+            }
+            return true
+        }
     } else if (Object.prototype.toString.call(argument) === "[object RegExp]") {
         return function (object) {
             return argument.test(object)
