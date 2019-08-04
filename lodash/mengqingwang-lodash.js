@@ -89,10 +89,13 @@ function differenceBy(array, ...values) {
     }
     var result = []
     var func = iteratee(values[values.length - 1])
-    var newvalues = func(values[0])
-    for (var j = 1 ; j < values.length - 1; j++) {
-        newvalues = newvalues.concat(func(values[j]))
+    // 先展开展平然后对每一个应用func
+    var newvalues = []
+    for (var i = 0 ; i < values.length - 1; i++) {
+        newvalues = newvalues.concat(values[i])
     }
+    newvalues = newvalues.map(it => func(it))
+    console.log(newvalues)
     for (var i = 0; i < array.length; i++) {
         if(findIn(newvalues, func(array[i])) == -1) {
             result.push(array[i])

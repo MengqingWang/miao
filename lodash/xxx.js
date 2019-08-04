@@ -170,20 +170,39 @@ function iteratee(argument) {
     }
 }
 
-function findIndex(array, predicate, fromIndex = 0) {
-    predicate = iteratee(predicate)
-    for (var i = fromIndex; i < array.length; i++) {
-        if (predicate(array[i])) {
-            return i
+function findIn(s1, s2) {
+    /* s2 长度为 1 */
+    let index = -1
+    for (var i = 0; i < s1.length; i++) {
+        var n = s1[i]
+        if (n === s2) {
+            index = i
+            break
         }
     }
-    return -1;
+    return index
 }
 
-var users = [
-  { 'user': 'barney',  'active': false },
-  { 'user': 'fred',    'active': false },
-  { 'user': 'pebbles', 'active': true }
-];
+function differenceBy(array, ...values) {
+    //有多种情况要判断
+    if (Array.isArray(values[values.length - 1])) {
+        return difference(array, ...values)
+    }
+    var result = []
+    var func = iteratee(values[values.length - 1])
+    // 先展开展平然后对每一个应用func
+    var newvalues = []
+    for (var i = 0 ; i < values.length - 1; i++) {
+        newvalues = newvalues.concat(values[i])
+    }
+    newvalues = newvalues.map(it => func(it))
+    console.log(newvalues)
+    for (var i = 0; i < array.length; i++) {
+        if(findIn(newvalues, func(array[i])) == -1) {
+            result.push(array[i])
+        }
+    }
+    return result
+}
 
-console.log(findIndex(users, { 'user': 'fred', 'active': false }))
+console.log(differenceBy([{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }], 'x'))
