@@ -549,9 +549,9 @@ function groupBy(ary, predicate) {
 
 return {
     iteratee,
-    property,
-    matches,
-    matchProperty,
+    // property,
+    // matches,
+    // matchProperty,
     chunk,
     compact,
     findIn,
