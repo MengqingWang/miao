@@ -530,11 +530,10 @@ function countBy(collection, predicate = identity) {
 //输出3
 
 function filter(ary,predicate) {
-    //这句话没用
     predicate = iteratee(predicate)
     var result = []
     for (var i = 0; i < ary.length; i++) {
-        if (predicate(ary[i], i , ary)) {
+        if (predicate(ary[i])) {
             result.push(ary[i])
         }
     return result
