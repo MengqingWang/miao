@@ -97,8 +97,8 @@ function filter(ary,predicate) {
         if (predicate(ary[i], i , ary)) {
             result.push(ary[i])
         }
-    return result
     }
+    return result
 }
 
 function every(ary, predicate) {

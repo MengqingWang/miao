@@ -1,35 +1,37 @@
 var mengqingwang = function() {
 
 //常用的迭代器函数
-function iteratee(argument) {
-    if (Object.prototype.toString.call(argument) === "[object String]") {
+function iteratee(args) {
+    if (Object.prototype.toString.call(args) === "[object String]") {
         return function (object) {
-            return object[argument]
+            return object[args]
         }
-    } else if (Object.prototype.toString.call(argument) === "[object Object]") {
-        return function (object) { //这里用for(var key of argument) 就不行
-            for(var key in argument) {
-                if(argument[key] !== object[key]) {
+    } else if (Object.prototype.toString.call(args) === "[object Object]") {
+        return function (object) { //这里用for(var key of args) 就不行
+            for(var key in args) {
+                if(args[key] !== object[key]) {
                     return false
                 }
             }
             return true
         }
-    } else if (Object.prototype.toString.call(argument) === "[object Array]") {
+    } else if (Object.prototype.toString.call(args) === "[object Array]") {
         return function (object) {
-            for (var i = 0; i < argument.length - 1; i += 2) {
-                if (object[argument[i]] !== argument[i + 1]) {
+            for (var i = 0; i < args.length - 1; i += 2) {
+                if (object[args[i]] !== args[i + 1]) {
                     return false
                 }
             }
             return true
         }
-    } else if (Object.prototype.toString.call(argument) === "[object RegExp]") {
-        return function(object) {
-            return argument.test(object)
-        }
-    } else if (Object.prototype.toString.call(argument) === "[object Function]") {
-        return argument
+    }
+    // else if (Object.prototype.toString.call(args) === "[object RegExp]") {
+    //     return function(object) {
+    //         return args.test(object)
+    //     }
+    // } 
+    else if (Object.prototype.toString.call(args) === "[object Function]") {
+        return args
     }
 }
 
@@ -529,6 +531,8 @@ function countBy(collection, predicate = identity) {
 // a["length"]
 //输出3
 
+//有一个测试没通过   先放放   好像是iteratee在搞鬼
+//https://lodash.com/docs/4.17.15#iteratee
 function filter(ary,predicate) {
     predicate = iteratee(predicate)
     var result = []
@@ -539,6 +543,7 @@ function filter(ary,predicate) {
     }
     return result
 }
+
 
 function every(ary, predicate) {
     predicate = iteratee(predicate)

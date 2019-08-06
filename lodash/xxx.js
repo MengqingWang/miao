@@ -350,8 +350,3 @@ function filter(ary,predicate) {
     }
     return result
 }
-var users = [
-  { 'user': 'barney', 'age': 36, 'active': true },
-  { 'user': 'fred',   'age': 40, 'active': false }
-];
-console.log(filter(users, function(o) { return !o.active; }))
