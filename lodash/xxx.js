@@ -350,3 +350,32 @@ function filter(ary,predicate) {
     }
     return result
 }
+
+function findIn(s1, s2) {
+    /* s2 长度为 1 */
+    let index = -1
+    for (var i = 0; i < s1.length; i++) {
+        var n = s1[i]
+        if (n === s2) {
+            index = i
+            break
+        }
+    }
+    return index
+}
+
+function find(collection, predicate, fromIndex=0) {
+    predicate = iteratee(predicate)
+    for (var i = 0; i < collection.length; i++) {
+        if (predicate(collection[i])) {
+            return collection[i]
+        }
+    }
+}
+var users = [
+  { 'user': 'barney',  'age': 36, 'active': true },
+  { 'user': 'fred',    'age': 40, 'active': false },
+  { 'user': 'pebbles', 'age': 1,  'active': true }
+];
+console.log(find(users, function(o) { return o.age < 40; })
+)

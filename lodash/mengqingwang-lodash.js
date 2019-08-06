@@ -24,12 +24,11 @@ function iteratee(args) {
             }
             return true
         }
+    } else if (Object.prototype.toString.call(args) === "[object RegExp]") {
+        return function(object) {
+            return args.test(object)
+        }
     }
-    // else if (Object.prototype.toString.call(args) === "[object RegExp]") {
-    //     return function(object) {
-    //         return args.test(object)
-    //     }
-    // } 
     else if (Object.prototype.toString.call(args) === "[object Function]") {
         return args
     }
@@ -544,6 +543,14 @@ function filter(ary,predicate) {
     return result
 }
 
+function find(collection, predicate, fromIndex=0) {
+    predicate = iteratee(predicate)
+    for (var i = 0; i < collection.length; i++) {
+        if (predicate(collection[i])) {
+            return collection[i]
+        }
+    }
+}
 
 function every(ary, predicate) {
     predicate = iteratee(predicate)
@@ -701,6 +708,7 @@ return {
     zipObject,
     countBy,
     filter,
+    find,
     every,
     some,
     negate,
