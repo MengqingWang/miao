@@ -341,13 +341,17 @@ function uniqBy(array, predicate) {
 //console.log(uniqBy([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], 'x'))
 
 function filter(ary,predicate) {
-    //这句话没用
-    // predicate = iteratee(predicate)
+    predicate = iteratee(predicate)
     var result = []
     for (var i = 0; i < ary.length; i++) {
         if (predicate(ary[i], i , ary)) {
             result.push(ary[i])
         }
-    return result
     }
+    return result
 }
+var users = [
+  { 'user': 'barney', 'age': 36, 'active': true },
+  { 'user': 'fred',   'age': 40, 'active': false }
+];
+console.log(filter(users, function(o) { return !o.active; }))
