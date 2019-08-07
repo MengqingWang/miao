@@ -1,75 +1,46 @@
-// function union(...array) {
-//     var result = []
-//     var newarray = [].concat(...array)
-//     newarray.forEach(val => {
-//         if (!result.includes(val)) {
-//             result.push(val)
-//         }
-//     })
-//     return result
-// }
-//
-// function uniq(array) {
-//     return union(array)
-// }
-//
-// function findIn(s1, s2) {
-//     /* s2 长度为 1 */
-//     let index = -1
-//     for (var i = 0; i < s1.length; i++) {
-//         var n = s1[i]
-//         if (n === s2) {
-//             index = i
-//             break
-//         }
-//     }
-//     return index
-// }
-//
-// function xor(...arrays) {
-//     var arr = [].concat(...arrays)
-//     var unique = uniq(arr)
-//     var count = Array(unique.length).fill(0) //计数器数组 跟去重数组的下标一一对应 表示的是unique数组中每个数字出现的次数
-//     var result = []
-//     for (var i = 0; i < arr.length; i++) {
-//         var index = findIn(unique, arr[i])
-//         count[index] += 1
-//     }
-//     for (var i = 0; i < count.length; i++) {
-//         if (count[i] == 1) {
-//             result.push(unique[i])
-//         }
-//     }
-//     return result
-// }
-//
-// console.log(xor([2, 1], [2, 3]))
+function xor(...arrays) {
+    var arr = [].concat(...arrays)
+    var unique = uniq(arr)
+    var count = Array(unique.length).fill(0) //计数器数组 跟去重数组的下标一一对应 表示的是unique数组中每个数字出现的次数
+    var result = []
+    for (var i = 0; i < arr.length; i++) {
+        var index = findIn(unique, arr[i])
+        count[index] += 1
+    }
+    for (var i = 0; i < count.length; i++) {
+        if (count[i] == 1) {
+            result.push(unique[i])
+        }
+    }
+    return result
+}
 
-// function zip(...arrays) {
-//     // 暂时不考虑各个数组里面元素个数不等的情况   也就是各个数组里面元素的个数相等
-//     var result = []
-//     var l = arrays[0].length
-//     for (var i = 0; i < l; i++) {
-//         result.push  //崩了  需要双重循环 不写下去了
-//
-// }
+//console.log(xor([2, 1], [2, 3]))
 
-//arrays有三个小数组   每个小数组有两个元素
-//这个好像就是力扣的867矩阵转置啊
-// function zip(...arrays) {
-//   return arrays[0].map((_,index)=>arrays.map(row=>row[index]))
-// }
-//
-// console.log(zip(['fred', 'barney'], [30, 40], [true, false]))
+function zip(...arrays) {
+    // 暂时不考虑各个数组里面元素个数不等的情况   也就是各个数组里面元素的个数相等
+    var result = []
+    var l = arrays[0].length
+    for (var i = 0; i < l; i++) {
+        result.push  //崩了  需要双重循环 不写下去了
 
+}
 
-// function zipObject(props = [], values = []) {
-//     var map = {}
-//     for (var i = 0; i < props.length; i++) {
-//         map[props[i]] = values[i];
-//     }
-//     return map;
-// }
+arrays有三个小数组   每个小数组有两个元素
+这个好像就是力扣的867矩阵转置啊
+function zip(...arrays) {
+  return arrays[0].map((_,index)=>arrays.map(row=>row[index]))
+}
+
+//console.log(zip(['fred', 'barney'], [30, 40], [true, false]))
+
+function zipObject(props = [], values = []) {
+    var map = {}
+    for (var i = 0; i < props.length; i++) {
+        map[props[i]] = values[i];
+    }
+    return map;
+}
 
 // function iteratee(action) {
 //     if (typeof action === 'string') {
@@ -366,7 +337,7 @@ function findIn(s1, s2) {
 
 function find(collection, predicate, fromIndex=0) {
     predicate = iteratee(predicate)
-    for (var i = 0; i < collection.length; i++) {
+    for (var i = fromIndex; i < collection.length; i++) {
         if (predicate(collection[i])) {
             return collection[i]
         }
@@ -379,3 +350,84 @@ var users = [
 ];
 console.log(find(users, function(o) { return o.age < 40; })
 )
+
+function flatten(ary) {
+    var result = []
+    for (var item of ary) {
+        if (Array.isArray(item)) {
+            result.push(...item)
+        } else {
+            result.push(item)
+        }
+    }
+    return result
+}
+function flattenDeep(ary) {
+    var result = []
+    for (var item of ary) {
+        if (Array.isArray(item)) {
+            //递归
+            var flattedItem = flattenDeep(item)
+            result.push(...flattedItem)
+        } else {
+            result.push(item)
+        }
+    }
+    return result
+}
+function flattenDepth(ary, depth = 1) {
+    if (depth == 0) {
+        return ary.slice()
+    }
+    var result = []
+    for (var item of ary) {
+        if (Array.isArray(item)) {
+            //递归
+            var flattedItem = flattenDepth(item, depth - 1)
+            result.push(...flattedItem)
+        } else {
+            result.push(item)
+        }
+    }
+    return result
+}
+function flatMap(collection, predicate) {
+    var result = []
+    for (var i = 0; i < collection.length; i++) {
+        var value = predicate(collection[i], i , collection)
+        result.push(value)
+    }
+    return flatten(result)
+}
+// function duplicate(n) {
+//   return [n, n];
+// }
+// console.log(flatMap([1, 2], duplicate))
+
+function flatMapDeep(collection, predicate) {
+    var result = []
+    for (var i = 0; i < collection.length; i++) {
+        var value = predicate(collection[i], i , collection)
+        result.push(value)
+    }
+    return flattenDeep(result)
+}
+// function duplicate(n) {
+//   return [[[n, n]]];
+// }
+// console.log(flatMapDeep([1, 2], duplicate))
+// => [1, 1, 2, 2]
+
+function flatMapDepth(collection, predicate, depth = 1) {
+    var result = []
+    for (var i = 0; i < collection.length; i++) {
+        var value = predicate(collection[i], i , collection)
+        result.push(value)
+    }
+    return flattenDepth(result, depth)
+}
+// function duplicate(n) {
+//   return [[[n, n]]];
+// }
+// console.log(flatMapDepth([1, 2], duplicate, 2))
+// => [[1, 1], [2, 2]]
