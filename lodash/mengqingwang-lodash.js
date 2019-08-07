@@ -808,7 +808,7 @@ return {
     get,
     property,
     matches,
-    matchProperty,
+    matchesProperty,
     iteratee,
     chunk,
     compact,
