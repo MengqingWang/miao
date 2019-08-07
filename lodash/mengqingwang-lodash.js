@@ -858,6 +858,8 @@ return {
     filter,
     find,
     flatMap,
+    flatMapDeep,
+    flatMapDepth,
     every,
     some,
     negate,
