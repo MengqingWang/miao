@@ -801,6 +801,92 @@ function groupBy(ary, predicate) {
     return result
 }
 
+function keyBy(collection, predicate) {
+    predicate = iteratee(predicate)
+    var result = {}
+    for (var i = 0; i < collection.length; i++) {
+        result[predicate(collection[i])] = collection[i]
+    }
+    return result
+}
+
+// var array = [
+//   { 'dir': 'left', 'code': 97 },
+//   { 'dir': 'right', 'code': 100 }
+// ];
+//
+// console.log(keyBy(array, function(o) {
+//   return String.fromCharCode(o.code)
+// }))
+//
+// console.log(keyBy(array, 'dir'))
+
+function map(collection, predicate) {
+    predicate = iteratee(predicate)
+    var result = []
+    if (Array.isArray(collection)) { //如果collection是一个数组
+        for (var i = 0; i < collection.length; i++) {
+            result.push(predicate(collection[i]))
+        }
+    } else {  //如果collection是一个对象 遍历对象  取出每一个value
+        for(var key in collection) {
+            result.push(predicate(collection[key]))
+        }
+    }
+    return result
+}
+
+function partition(collection, predicate) {
+    predicate = iteratee(predicate)
+    var result = []
+    var trueSet = []
+    var falseSet = []
+    for (var i = 0; i < collection.length; i++) {
+        var key = Object.keys(collection[i])[0]
+        if (predicate(collection[i])) {
+            trueSet.push(collection[i][key])
+        } else {
+            falseSet.push(collection[i][key])
+        }
+    }
+    result.push(trueSet)
+    result.push(falseSet)
+    return result
+}
+
+// var users = [
+//   { 'user': 'barney',  'age': 36, 'active': false },
+//   { 'user': 'fred',    'age': 40, 'active': true },
+//   { 'user': 'pebbles', 'age': 1,  'active': false }
+// ];
+//
+// console.log(partition(users, function(o) { return o.active; }))
+//
+// console.log(partition(users, { 'age': 1, 'active': false }))
+//
+// console.log(partition(users, ['active', false]))
+//
+// console.log(partition(users, 'active'))
+
+function reduce(collection, combine, accumulator) {
+    for (var key in collection) {
+        if (accumulator === undefined) { //如果没有提供 accumulator，则集合中的第一个元素作为 accumulator
+            accumulator = collection[key]
+        }
+        accumulator = combine(accumulator, collection[key], key, collection)
+    }   //combine必须传递四个参数
+    return accumulator
+}
+
+// console.log(reduce([1, 2], function(sum, n) {
+//   return sum + n;
+// }, 0))
+//
+// console.log(reduce({ 'a': 1, 'b': 2, 'c': 1 }, function(result, value, key) {
+//   (result[value] || (result[value] = [])).push(key)
+//   return result
+// }, {}))
+
 return {
     isMatch,
     bind,
@@ -872,6 +958,10 @@ return {
     curry,
     memoize,
     groupBy,
+    keyBy,
+    map,
+    partition,
+    reduce,
 }
 
 }()
