@@ -887,6 +887,130 @@ function reduce(collection, combine, accumulator) {
 //   return result
 // }, {}))
 
+function reject(ary,predicate) {
+    predicate = iteratee(predicate)
+    var result = []
+    for (var i = 0; i < ary.length; i++) {
+        if (!predicate(ary[i], i , ary)) {
+            result.push(ary[i])
+        }
+    }
+    return result
+}
+
+function sample(ary) {
+    var a = Math.random()
+    a = a * ary.length
+    var idx = Math.floor(a)
+    return ary[idx]
+}
+
+function sampleSize(ary, n = 0) {
+    var result = []
+    if (n > ary.length) {
+        n = ary.length
+    }
+    for (var i = 0; i < n; i++) {
+        var element = sample(ary)
+        if (!result.includes(element)) {
+            result.push(element)
+        }
+    }
+    return result
+}
+
+function shuffle(ary) {
+    return sampleSize(ary, ary.length)
+}
+
+function size(array) {
+    var count = 0;
+    for (var i in array) {
+        count++;
+    }
+    return count;
+}
+
+function defer(func, ...args) {
+    return delay(func, 1, ...args)
+}
+
+function delay(func, wait, ...args) {
+    return setTimeout(func(...args), wait)
+}
+
+function eq(value, other) {
+    if (isNaN(value) && isNaN(other)) {
+        return true
+    }
+    return value === other
+}
+// var object = { 'a': 1 };
+// var other = { 'a': 1 };
+//
+// console.log(eq(object, object))
+// console.log(eq(object, other))
+// console.log(eq('a', 'a'))
+// console.log(eq('a', Object('a')))
+// console.log(eq(NaN, NaN))
+
+function gt(value, other) {
+    return value > other
+}
+
+function gte(value, other) {
+    return value >= other
+}
+
+function isArguments(val) {
+    return Object.prototype.toString.call(val) === "[object Arguments]"
+}
+
+//这个有两种写法
+// function isArray(value) {
+//     return Array.isArray(value)
+// }
+function isArray(val) {
+    return Object.prototype.toString.call(val) === "[object Array]"
+}
+
+function isArrayBuffer(val) {
+    return Object.prototype.toString.call(val) === "[object ArrayBuffer]"
+}
+
+//检查 value 是否是类数组。 如果是类数组的话，应该不是一个函数，而且 value.length 是个整数，大于等于 0，小于或等于 Number.MAX_SAFE_INTEGER
+// function isArrayLike(val) {
+//     return !isNil(val) && isLength(val.length) && !isFunction(val)
+// }
+
+// function isArrayLikeObject(val) {
+//
+// }
+
+function isBoolean(val) {
+    return Object.prototype.toString.call(val) === "[object Boolean]"
+}
+
+function isDate(val) {
+    return Object.prototype.toString.call(val) === "[object Date]"
+}
+
+function isElement(val) {
+    return Object.prototype.toString.call(val) === "[object Element]"
+}
+
+function isEmpty(val) {
+    var i = 0
+    for (key in val) {
+        i++
+    }
+    return i == 0
+}
+
+// function isEqual(val) {
+//
+// }
+
 return {
     isMatch,
     bind,
@@ -962,6 +1086,23 @@ return {
     map,
     partition,
     reduce,
+    reject,
+    sample,
+    sampleSize,
+    shuffle,
+    size,
+    defer,
+    delay,
+    eq,
+    gt,
+    gte,
+    isArguments,
+    isArray,
+    isArrayBuffer,
+    isBoolean,
+    isDate,
+    isElement,
+    isEmpty,
 }
 
 }()
