@@ -21,7 +21,7 @@ function baseSlice(array, start, end) {
   return result;
 }
 
-//8576行
+//8576行   读xor函数   下面牵出了那么多其它的函数
 var xor = baseRest(function(arrays) {
   return baseXor(arrayFilter(arrays, isArrayLikeObject));
 });
@@ -115,4 +115,23 @@ function baseUniq(array, iteratee, comparator) {
     }
   }
   return result;
+}
+
+//xor函数未读完  先来看看其他函数
+//10944行  很好   这个函数跟我写的一模一样
+function unary(func) {
+  return ary(func, 1);
+}
+
+//11198行
+function eq(value, other) {
+  return value === other || (value !== value && other !== other);
+}
+
+//跟我自己写的有什么区别  ??
+function eq(value, other) {
+    if (isNaN(value) && isNaN(other)) {
+        return true
+    }
+    return value === other
 }

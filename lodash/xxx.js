@@ -599,11 +599,14 @@ function delay(func, wait, ...args) {
     return setTimeout(func(...args), wait)
 }
 
+// function eq(value, other) {
+//     if (isNaN(value) && isNaN(other)) {
+//         return true
+//     }
+//     return value === other
+// }
 function eq(value, other) {
-    if (isNaN(value) && isNaN(other)) {
-        return true
-    }
-    return value === other
+  return value === other || (value !== value && other !== other)
 }
 //
 // var object = { 'a': 1 };
@@ -671,3 +674,15 @@ function isEmpty(val) {
 // function isEqual(val) {
 //
 // }
+
+function isError(val) {
+    return Object.prototype.toString.call(val) === "[object Error]"
+}
+
+function isFinite(val) {
+    return Number.isFinite(val)
+}
+
+function isFunction(val) {
+    return Object.prototype.toString.call(val) === "[object Function]"
+}
