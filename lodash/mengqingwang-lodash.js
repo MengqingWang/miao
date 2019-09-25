@@ -1014,6 +1014,92 @@ function isEmpty(val) {
 //
 // }
 
+function isError(val) {
+    return Object.prototype.toString.call(val) === "[object Error]"
+}
+
+function isFinite(val) {
+    return Number.isFinite(val)
+}
+
+function isFunction(val) {
+    return Object.prototype.toString.call(val) === "[object Function]"
+}
+
+function isInteger(val) { // 介绍里面已经说了这个方法基于 Number.isInteger
+    return Number.isInteger(val)
+}
+
+//先保证是个数字   然后不能是负数  不能是小数
+//Number.MAX_SAFE_INTEGER常量表示在 JavaScript 中最大的安全整数
+//MIN_VALUE 属性是 JavaScript 里最接近 0 的正值，而不是最小的负值。MIN_VALUE 的值约为 5e-324。
+function isLength(value) {
+    return typeof value == 'number' &&
+        value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER
+}
+
+function isMap(val) {
+    return Object.prototype.toString.call(val) === "[object Map]"
+}
+
+//需要写递归
+// function isMatch(val) {
+//
+// }
+
+//检查 value 是否是 NaN   意思就是仅 NaN 返回真
+// An `NaN` primitive is the only value that is not equal to itself.
+//_.isNumber(NaN)返回 true    _.isNumber(9) 也是返回 true
+// function isNaN(value) {
+//   return isNumber(value) && value != +value
+// }
+
+// console.log(isNaN(NaN))
+// console.log(isNaN(null))
+// console.log(isNaN(undefined))
+
+//chrome的js引擎时c++写的, Array是JS中基础组件, 其中的方法应该都是c++实现的, 所以你打印时直接告诉你这是native code
+function isNative(val) {
+    return val.toString().includes("[native code]")
+}
+
+function isNil(val) {
+    return val === undefined || val === null
+}
+
+function isNull(val) {
+    return val === null
+}
+
+// function isNumber(value) {
+//   return typeof value == 'number' ||
+//     (isObjectLike(value) && baseGetTag(value) == numberTag)
+// }
+function isNumber(val) {
+    return Object.prototype.toString.call(val) === "[object Number]"
+}
+
+function isObject(val) {
+  var type = typeof val
+  return val != null && (type == 'object' || type == 'function')
+}
+
+function isObjectLike(value) {
+  return value != null && typeof value == 'object'
+}
+
+//检查 value 是否是普通对象。
+//也就是说该对象由 Object 构造函数创建或者 [[Prototype]] 为空。
+//Object.getPrototypeOf() 方法返回指定对象的原型（内部[[Prototype]]属性的值）。
+function isPlainObject(val) {
+    let proto = Object.getPrototypeOf(val)
+    return proto == null || proto.constructor == Object;
+}
+
+function isRegExp(val) {
+    return Object.prototype.toString.call(val) === "[object RegExp]";
+}
+
 return {
     isMatch,
     bind,
@@ -1106,6 +1192,20 @@ return {
     isDate,
     isElement,
     isEmpty,
+    isError,
+    isFinite,
+    isFunction,
+    isInteger,
+    isLength,
+    isMap,
+    isNative,
+    isNil,
+    isNull,
+    isNumber,
+    isObject,
+    isObjectLike,
+    isPlainObject,
+    isRegExp,
 }
 
 }()
